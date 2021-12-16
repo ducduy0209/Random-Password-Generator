@@ -4,6 +4,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -42,6 +43,7 @@ input {
     outline: none;
     font-size: 17px;
     padding: 4px 20px;
+    color: #000;
 }
 
 .wrapper-input i {
