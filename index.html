@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Password Generator</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
+    <link href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>Random Password Generator</header>
+        <div class="wrapper-input">
+            <input type="text" disabled>
+            <i class="far fa-copy"></i>
+            <i class="far fa-check"></i>
+        </div>
+        <button>GENERATE PASSWORD</button>
+    </div>
+
+    <script>
+        const input = document.querySelector('input');
+        const randomBtn = document.querySelector('button');
+        const copyBtn = document.querySelector('.fa-copy');
+        const copyActive = document.querySelector('.fa-check');
+
+        const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~|;?><,./-=";
+
+        randomBtn.addEventListener('click', () => {
+            let randomValue = '';
+            for (let i = 0; i < 16; i++) {
+                randomValue += chars[Math.floor(Math.random() * chars.length)];
+            }
+            input.value = randomValue;
+            copyBtn.style.display = 'block';
+            copyActive.style.display = "none";
+        })
+
+        copyBtn.addEventListener('click', () => {
+            if (input.value) {
+                copyBtn.style.display = 'none';
+                copyActive.style.display = "block";
+                input.select();
+                input.setSelectionRange(0, 99999); /* For mobile devices */
+                /* Copy the text inside the text field */
+                navigator.clipboard.writeText(input.value);
+            }
+        })
+    </script>
+</body>
+
+</html>
